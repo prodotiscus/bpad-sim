@@ -35,12 +35,6 @@
 
         // Add the location to the scene we are building
         app.stage.addChild(location);
-
-        // Listen for frame updates
-        app.ticker.add(() => {
-          // each frame we spin the location around a bit
-          location.rotation += 0.01;
-        });
       });
   </script>
 </html>
