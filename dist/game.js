@@ -99,7 +99,7 @@ class Game {
         var x = this.sprites.npc1.x;
         var y = this.sprites.npc1.y;
 
-        for (var i = 0; i < this.pkeys.length; i ++) {
+        for (var i = 0; i < this.pKeys.length; i ++) {
             if (this.pKeys[i] == 'ArrowUp') {
                 if (y > 0) y -= this.me.physical.speed;
             }
