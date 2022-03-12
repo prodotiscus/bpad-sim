@@ -42,7 +42,7 @@ class Game {
     borderPolicy = {
         1: {
             forbidden: [
-                Rect(295, 260, 425, 130)
+                new Rect(295, 260, 425, 130)
             ]
         }
     }
