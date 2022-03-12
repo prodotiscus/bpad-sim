@@ -20,23 +20,23 @@
 
     // load the texture we need
     app.loader
-      .add('location', 'src/images/location1.png')
+      .add('lct', 'src/images/location1.png')
       .load((loader, resources) => {
-        // This creates a texture from a 'location.png' image
-        const location = new PIXI.Sprite(resources.location.texture);
-        location.height = 500;
-        location.width = 500;
+        // This creates a texture from a 'lct.png' image
+        const lct = new PIXI.Sprite(resources.lct.texture);
+        lct.height = 500;
+        lct.width = 500;
 
-        // Setup the position of the location
-        location.x = app.renderer.width / 2;
-        location.y = app.renderer.height / 2;
+        // Setup the position of the lct
+        lct.x = app.renderer.width / 2;
+        lct.y = app.renderer.height / 2;
 
         // Rotate around the center
-        location.anchor.x = 0.5;
-        location.anchor.y = 0.5;
+        lct.anchor.x = 0.5;
+        lct.anchor.y = 0.5;
 
-        // Add the location to the scene we are building
-        app.stage.addChild(location);
+        // Add the lct to the scene we are building
+        app.stage.addChild(lct);
       });
   </script>
 </html>
