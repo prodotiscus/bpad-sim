@@ -66,17 +66,17 @@ class Game {
 
     sendKey (key) {
         if (this.sprites.npc1 === undefined) return;
-        
+
         if (key == 'ArrowUp') {
             if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y ++;
         }
         else if (key == 'ArrowDown') {
             if (this.sprites.npc1.y > 0) this.sprites.npc1.y --;
         }
-        else if (keyCode == 'ArrowLeft') {
+        else if (key == 'ArrowLeft') {
             if (this.sprites.npc1.x > 0) this.sprites.npc1.x --;
         }
-        else if (keyCode == 'ArrowRight') {
+        else if (key == 'ArrowRight') {
             if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.y ++;
         }
     }
