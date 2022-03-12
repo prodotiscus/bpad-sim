@@ -34,6 +34,7 @@ class Game {
             this.sprites.lct1 = this.wrapLocation(new PIXI.Sprite(resources.lct1.texture));
             this.sprites.npc1 = new PIXI.Sprite(resources.npc_a.texture);
             onload(this);
+            document.onkeydown = this.checkKey;
         });
     }
 
@@ -85,7 +86,5 @@ class Game {
 
 
 var game = new Game();
-
-document.onkeydown = game.checkKey;
 
 
