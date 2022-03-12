@@ -6,9 +6,13 @@ document.body.appendChild(app.view);
 class Game {
     constructor() {
         this.sprites = {};
-        this.defaultNpc = null;
         this.preload(function (t) {
             app.stage.addChild(t.sprites.lct1);
+            app.stage.addChild(
+                t.wrapNpc(
+                    t.sprites.npc1
+                )
+            );
         });
     }
 
@@ -42,6 +46,19 @@ class Game {
         locObj.anchor.y = 0.5;
 
         return locObj;
+    }
+
+    wrapNpc(npcObj) {
+        npcObj.height = 100;
+        npcObj.width = 50;
+
+        npcObj.x = app.renderer.width / 2;
+        npcObj.y = app.renderer.height / 2;
+
+        npcObj.anchor.x = 0.5;
+        npcObj.anchor.y = 0.5;
+
+        return npcObj;
     }
 }
 
