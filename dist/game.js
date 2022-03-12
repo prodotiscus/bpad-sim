@@ -37,8 +37,8 @@ class Game {
     checkPolicy(x, y) {
         var fbd = this.borderPolicy[this.lctNumber].forbidden;
         for (var i = 0; i < fbd.length; i ++) {
-            var xx = [fbd[0].x, fbd[1].x];
-            var yy = [fbd[0].y, fbd[1].y];
+            var xx = [fbd[i][0].x, fbd[i][1].x];
+            var yy = [fbd[i][0].y, fbd[i][1].y];
             var comp = function(a, b) {
                 return a - b;
             }
