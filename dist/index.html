@@ -23,7 +23,7 @@
       .add('location', 'src/images/location1.png')
       .load((loader, resources) => {
         // This creates a texture from a 'location.png' image
-        location = new PIXI.Sprite(resources.location.texture);
+        const location = new PIXI.Sprite(resources.location.texture);
         location.height = 500;
         location.width = 500;
 
