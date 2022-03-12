@@ -42,7 +42,13 @@ class Game {
     borderPolicy = {
         1: {
             forbidden: [
-                new Rect(295, 130, 425, 260)
+                new Rect(295, 130, 425, 260),
+                new Rect(110, 0, 805, 230),
+                new Rect(45, 255, 105, 285),
+                new Rect(45, 360, 225, 525),
+                new Rect(360, 330, 450, 465),
+                new Rect(600, 195, 750, 375),
+                new Rect(450, 210, 540, 255)
             ]
         }
     }
@@ -127,6 +133,14 @@ class Game {
 
     unsendKey (key) {
         delete this.pressed[key];
+    }
+
+    logXY () {
+        setInterval(
+            function () {
+                console.log(game.sprites.npc1.x, game.sprites.npc1.y)
+            },
+            100);
     }
     
 }
