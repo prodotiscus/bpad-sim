@@ -64,27 +64,27 @@ class Game {
         return npcObj;
     }
 
-    checkKey (e) {
-
-        e = e || window.event;
     
-        if (e.key == 'ArrowUp') {
-            if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y ++;
-        }
-        else if (e.key == 'ArrowDown') {
-            if (this.sprites.npc1.y > 0) this.sprites.npc1.y --;
-        }
-        else if (e.keyCode == 'ArrowLeft') {
-            if (this.sprites.npc1.x > 0) this.sprites.npc1.x --;
-        }
-        else if (e.keyCode == 'ArrowRight') {
-            if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.y ++;
-        }
-    
-    }
 }
 
 
 var game = new Game();
 
+document.onkeydown = function (e) {
 
+    e = e || window.event;
+
+    if (e.key == 'ArrowUp') {
+        if (game.sprites.npc1.y < game.maxHeight) game.sprites.npc1.y ++;
+    }
+    else if (e.key == 'ArrowDown') {
+        if (game.sprites.npc1.y > 0) game.sprites.npc1.y --;
+    }
+    else if (e.keyCode == 'ArrowLeft') {
+        if (game.sprites.npc1.x > 0) game.sprites.npc1.x --;
+    }
+    else if (e.keyCode == 'ArrowRight') {
+        if (game.sprites.npc1.y < game.maxWidth) game.sprites.npc1.y ++;
+    }
+
+}
