@@ -24,7 +24,7 @@ class Game {
 
     preload (onload) {
         app.loader
-        .add('lct1', 'src/images/location' + number + '.png')
+        .add('lct1', 'src/images/location1.png')
         .add('npc_a', 'src/images/npc-a.jpg')
         .load((loader, resources) => {
             this.sprites.lct1 = this.wrapLocation(new PIXI.Sprite(resources.lct1.texture));
