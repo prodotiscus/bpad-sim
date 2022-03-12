@@ -41,12 +41,17 @@ class Game {
     }
 
     spawnNpc(name) {
-        this.npc = PIXI.Sprite.from('src/images/' + name);
-        this.npc.x = app.renderer.width / 2;
-        this.npc.y = app.renderer.height / 2;
-        this.npc.anchor.x = 0.5;
-        this.npc.anchor.y = 0.5;
-        app.stage.addChild(this.npc);
+        app.loader
+        .add('npc_cur', 'src/images/' + name)
+        .load((loader, resources) => {
+            this.npc = new PIXI.Sprite(resources.npc_cur.texture);
+            this.npc.x = app.renderer.width / 2;
+            this.npc.y = app.renderer.height / 2;
+            this.npc.anchor.x = 0.5;
+            this.npc.anchor.y = 0.5;
+            app.stage.addChild(this.npc);
+        });
+        
     }
 }
 
