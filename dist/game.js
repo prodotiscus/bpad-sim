@@ -8,6 +8,7 @@ class Game {
         this.maxHeight = 600;
         this.maxWidth = 800;
         this.sprites = {};
+        this.pressed = {};
         this.me = {
             physical: {
                 speed: 5
@@ -73,6 +74,10 @@ class Game {
     sendKey (key) {
         if (this.sprites.npc1 === undefined) return;
 
+        for (var kk in this.pressed) {
+            if (kk !== key) this.sendKey(kk);
+        }
+
         if (key == 'ArrowUp') {
             if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
         }
@@ -87,6 +92,9 @@ class Game {
         }
     }
 
+    unsendKey (key) {
+        delete this.pressed[key];
+    }
     
 }
 
@@ -98,5 +106,13 @@ document.addEventListener('keydown', function (e) {
     e = e || window.event;
 
     game.sendKey(e.key);
+
+});
+
+document.addEventListener('keyup', function (e) {
+
+    e = e || window.event;
+
+    game.unsendKey(e.key);
 
 });
