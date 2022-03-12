@@ -22,6 +22,7 @@ class Game {
         this.maxWidth = 800;
         this.sprites = {};
         this.pressed = {};
+        this.xyDebug = false;
         this.lctNumber = 1;
         this.me = {
             physical: {
@@ -56,7 +57,10 @@ class Game {
     checkPolicy(x, y) {
         var fbd = this.borderPolicy[this.lctNumber].forbidden;
         for (var i = 0; i < fbd.length; i ++) {
-            if (fbd[i].contains(x, y)) return false;
+            if (fbd[i].contains(x, y)) {
+                if (this.xyDebug) console.log("stopped on no. " + i)
+                return false;
+            }
         }
 
         return true;
