@@ -42,7 +42,7 @@ class Game {
     borderPolicy = {
         1: {
             forbidden: [
-                new Rect(295, 260, 425, 130)
+                new Rect(295, 130, 425, 260)
             ]
         }
     }
@@ -118,6 +118,8 @@ class Game {
                 if (y < this.maxWidth) x += this.me.physical.speed;
             }
         }
+
+        if (!this.checkPolicy(x,y)) return;
 
         this.sprites.npc1.x = x;
         this.sprites.npc1.y = y;
