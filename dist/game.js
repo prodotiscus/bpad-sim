@@ -77,18 +77,17 @@ class Game {
         this.pressed[key] = true;
 
         this.pkeys = Object.keys(this.pressed);
-        for (var i in this.pkeys) {
-            ky = this.pkeys[i];
-            if (ky == 'ArrowUp') {
+        for (var i = 0; i < this.pkeys.length; i ++) {
+            if (this.pkeys[i] == 'ArrowUp') {
                 if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
             }
-            else if (ky == 'ArrowDown') {
+            else if (this.pkeys[i] == 'ArrowDown') {
                 if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y += this.me.physical.speed;
             }
-            else if (ky == 'ArrowLeft') {
+            else if (this.pkeys[i] == 'ArrowLeft') {
                 if (this.sprites.npc1.x > 0) this.sprites.npc1.x -= this.me.physical.speed;
             }
-            else if (ky == 'ArrowRight') {
+            else if (this.pkeys[i] == 'ArrowRight') {
                 if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.x += this.me.physical.speed;
             }
         }
