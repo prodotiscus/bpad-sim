@@ -5,13 +5,11 @@ document.body.appendChild(app.view);
 
 class Game {
     constructor() {
+        this.sprites = {};
+        this.defaultNpc = null;
         this.preload(function (t) {
             app.stage.addChild(t.sprites.lct1);
         });
-        this.locationNumber = 1;
-        this.loadLocation(this.locationNumber);
-        this.sprites = {};
-        this.defaultNpc = null;
     }
 
     borderPolicy = {
