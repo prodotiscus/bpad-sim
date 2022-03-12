@@ -45,6 +45,8 @@ class Game {
             xx.sort(comp);
             yy.sort(comp);
 
+            console.log(xx, x, yy, y);
+
             if (xx[0] < x < xx[1] && yy[0] < y < yy[1]) return false;
         }
 
