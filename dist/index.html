@@ -9,14 +9,6 @@
     <h1>Bipolar Disorder Simulator</h1>
   </body>
   <script>
-    function asset(name) {
-      return (
-        'https://raw.githubusercontent.com/prodotiscus/bpad-sim/master/asset/' +
-        name
-      );
-    }
-  </script>
-  <script>
     // The application will create a renderer using WebGL, if possible,
     // with a fallback to a canvas render. It will also setup the ticker
     // and the root stage PIXI.Container
@@ -28,7 +20,7 @@
 
     // load the texture we need
     app.loader
-      .add('location', asset('location1.png'))
+      .add('location', 'src/images/location1.png'))
       .load((loader, resources) => {
         // This creates a texture from a 'location.png' image
         const location = new PIXI.Sprite(resources.location.texture);
