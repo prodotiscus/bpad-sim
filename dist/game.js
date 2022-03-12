@@ -47,7 +47,7 @@ class Game {
 
             console.log(xx, x, yy, y);
 
-            if (xx[0] < x < xx[1] && yy[0] < y < yy[1]) return false;
+            if (xx[0] < x && x < xx[1] && yy[0] < y && y < yy[1]) return false;
         }
 
         return true;
