@@ -9,6 +9,7 @@ class Game {
         this.maxWidth = 800;
         this.sprites = {};
         this.pressed = {};
+        this.lctNumber = 1;
         this.me = {
             physical: {
                 speed: 5
@@ -28,9 +29,26 @@ class Game {
     borderPolicy = {
         1: {
             forbidden: [
-                [300, 400], [500, 600]
+                [{x: 295, y: 260}, {x: 425, y:130}]
             ]
         }
+    }
+
+    checkPolicy(x, y) {
+        var fbd = this.borderPolicy[this.lctNumber].forbidden;
+        for (var i = 0; i < fbd.length; i ++) {
+            var xx = [fbd[0].x, fbd[1].x];
+            var yy = [fbd[0].y, fbd[1].y];
+            var comp = function(a, b) {
+                return a - b;
+            }
+            xx.sort(comp);
+            yy.sort(comp);
+
+            if (xx[0] < x < xx[1] && yy[0] < y < yy[1]) return false;
+        }
+
+        return true;
     }
 
     preload (onload) {
@@ -76,21 +94,28 @@ class Game {
 
         this.pressed[key] = true;
 
-        this.pkeys = Object.keys(this.pressed);
+        this.pKeys = Object.keys(this.pressed);
+        
+        var x = this.sprites.npc1.x;
+        var y = this.sprites.npc1.y;
+
         for (var i = 0; i < this.pkeys.length; i ++) {
-            if (this.pkeys[i] == 'ArrowUp') {
-                if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
+            if (this.pKeys[i] == 'ArrowUp') {
+                if (y > 0) y -= this.me.physical.speed;
             }
-            else if (this.pkeys[i] == 'ArrowDown') {
-                if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y += this.me.physical.speed;
+            else if (this.pKeys[i] == 'ArrowDown') {
+                if (y < this.maxHeight) y += this.me.physical.speed;
             }
-            else if (this.pkeys[i] == 'ArrowLeft') {
-                if (this.sprites.npc1.x > 0) this.sprites.npc1.x -= this.me.physical.speed;
+            else if (this.pKeys[i] == 'ArrowLeft') {
+                if (x > 0) x -= this.me.physical.speed;
             }
-            else if (this.pkeys[i] == 'ArrowRight') {
-                if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.x += this.me.physical.speed;
+            else if (this.pKeys[i] == 'ArrowRight') {
+                if (y < this.maxWidth) x += this.me.physical.speed;
             }
         }
+
+        this.sprites.npc1.x = x;
+        this.sprites.npc1.y = y;
     }
 
     unsendKey (key) {
