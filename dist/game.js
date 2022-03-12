@@ -3,6 +3,19 @@ const app = new PIXI.Application();
 document.body.appendChild(app.view);
 
 
+function Rect (x1, y1, x2, y2) {
+
+    this.x1 = x1;
+    this.y1 = y1;
+    this.x2 = x2;
+    this.y2 = y2;
+
+    this.contains = function (x, y) {
+        return this.x1 <= x && x <= this.x2 &&
+               this.y1 <= y && y <= this.y2;
+    }
+}
+
 class Game {
     constructor() {
         this.maxHeight = 600;
@@ -29,7 +42,7 @@ class Game {
     borderPolicy = {
         1: {
             forbidden: [
-                [{x: 295, y: 260}, {x: 425, y:130}]
+                Rect(295, 260, 425, 130)
             ]
         }
     }
@@ -37,17 +50,7 @@ class Game {
     checkPolicy(x, y) {
         var fbd = this.borderPolicy[this.lctNumber].forbidden;
         for (var i = 0; i < fbd.length; i ++) {
-            var xx = [fbd[i][0].x, fbd[i][1].x];
-            var yy = [fbd[i][0].y, fbd[i][1].y];
-            var comp = function(a, b) {
-                return a - b;
-            }
-            xx.sort(comp);
-            yy.sort(comp);
-
-            console.log(xx, x, yy, y);
-
-            if (xx[0] < x && x < xx[1] && yy[0] < y && y < yy[1]) return false;
+            if (fbd[i].contains(x, y)) return false;
         }
 
         return true;
