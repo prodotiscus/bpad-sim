@@ -78,6 +78,8 @@ class Game {
             if (kk !== key) this.sendKey(kk);
         }
 
+        this.pressed[key] = true;
+
         if (key == 'ArrowUp') {
             if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
         }
