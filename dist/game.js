@@ -68,16 +68,16 @@ class Game {
         if (this.sprites.npc1 === undefined) return;
 
         if (key == 'ArrowUp') {
-            if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y ++;
+            if (this.sprites.npc1.y > 0) this.sprites.npc1.y --;
         }
         else if (key == 'ArrowDown') {
-            if (this.sprites.npc1.y > 0) this.sprites.npc1.y --;
+            if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y ++;
         }
         else if (key == 'ArrowLeft') {
             if (this.sprites.npc1.x > 0) this.sprites.npc1.x --;
         }
         else if (key == 'ArrowRight') {
-            if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.y ++;
+            if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.x ++;
         }
     }
 
@@ -87,10 +87,10 @@ class Game {
 
 var game = new Game();
 
-document.onkeydown = function (e) {
+document.addEventListener('keydown', function (e) {
 
     e = e || window.event;
 
     game.sendKey(e.key);
 
-}
+});
