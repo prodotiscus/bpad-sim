@@ -5,10 +5,13 @@ document.body.appendChild(app.view);
 
 class Game {
     constructor() {
+        this.preload(function (t) {
+            app.stage.addChild(t.sprites.lct1);
+        });
         this.locationNumber = 1;
         this.loadLocation(this.locationNumber);
-        this.npc = null;
-        this.currentNpcName = "npc-a.jpg";
+        this.sprites = {};
+        this.defaultNpc = null;
     }
 
     borderPolicy = {
@@ -19,39 +22,28 @@ class Game {
         }
     }
 
-    loadLocation(number) {
-        console.log(this.borderPolicy[number]);
+    preload (onload) {
         app.loader
-        .add('lct', 'src/images/location' + number + '.png')
+        .add('lct1', 'src/images/location' + number + '.png')
+        .add('npc_a', 'src/images/npc-a.jpg')
         .load((loader, resources) => {
-            const lct = new PIXI.Sprite(resources.lct.texture);
-            lct.height = 600;
-            lct.width = 800;
-
-            lct.x = app.renderer.width / 2;
-            lct.y = app.renderer.height / 2;
-
-            lct.anchor.x = 0.5;
-            lct.anchor.y = 0.5;
-
-            app.stage.addChild(lct);
+            this.sprites.lct1 = this.wrapLocation(new PIXI.Sprite(resources.lct1.texture));
+            this.sprites.npc1 = new PIXI.Sprite(resources.npc_a.texture);
+            onload(this);
         });
-        
-        this.spawnNpc(this.currentNpcName);
     }
 
-    spawnNpc(name) {
-        app.loader
-        .add('npc_cur', 'src/images/' + name)
-        .load((loader, resources) => {
-            this.npc = new PIXI.Sprite(resources.npc_cur.texture);
-            this.npc.x = app.renderer.width / 2;
-            this.npc.y = app.renderer.height / 2;
-            this.npc.anchor.x = 0.5;
-            this.npc.anchor.y = 0.5;
-            app.stage.addChild(this.npc);
-        });
-        
+    wrapLocation(locObj) {
+        locObj.height = 600;
+        locObJ.width = 800;
+
+        locObJ.x = app.renderer.width / 2;
+        locObJ.y = app.renderer.height / 2;
+
+        locObj.anchor.x = 0.5;
+        locObj.anchor.y = 0.5;
+
+        return locObj;
     }
 }
 
