@@ -50,7 +50,7 @@ class Game {
 
     wrapNpc(npcObj) {
         npcObj.height = 100;
-        npcObj.width = 50;
+        npcObj.width = 200;
 
         npcObj.x = app.renderer.width / 2;
         npcObj.y = app.renderer.height / 2;
