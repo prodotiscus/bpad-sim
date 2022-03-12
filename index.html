@@ -7,7 +7,48 @@
   </head>
   <body>
     <h1>Bipolar Disorder Simulator</h1>
-
-    <canvas id="game"></canvas>
   </body>
+  <script>
+    function asset(name) {
+      return (
+        'https://raw.githubusercontent.com/prodotiscus/bpad-sim/master/asset/' +
+        name
+      );
+    }
+  </script>
+  <script>
+    // The application will create a renderer using WebGL, if possible,
+    // with a fallback to a canvas render. It will also setup the ticker
+    // and the root stage PIXI.Container
+    const app = new PIXI.Application();
+
+    // The application will create a canvas element for you that you
+    // can then insert into the DOM
+    document.body.appendChild(app.view);
+
+    // load the texture we need
+    app.loader
+      .add('location', asset('location1.png'))
+      .load((loader, resources) => {
+        // This creates a texture from a 'location.png' image
+        const location = new PIXI.Sprite(resources.location.texture);
+
+        // Setup the position of the location
+        location.x = app.renderer.width / 2;
+        location.y = app.renderer.height / 2;
+
+        // Rotate around the center
+        location.anchor.x = 0.5;
+        location.anchor.y = 0.5;
+
+        // Add the location to the scene we are building
+        app.stage.addChild(location);
+
+        // Listen for frame updates
+        app.ticker.add(() => {
+          // each frame we spin the location around a bit
+          location.rotation += 0.01;
+        });
+      });
+  </script>
 </html>
