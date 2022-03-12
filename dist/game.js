@@ -33,10 +33,10 @@ class Game {
 
     wrapLocation(locObj) {
         locObj.height = 600;
-        locObJ.width = 800;
+        locObj.width = 800;
 
-        locObJ.x = app.renderer.width / 2;
-        locObJ.y = app.renderer.height / 2;
+        locObj.x = app.renderer.width / 2;
+        locObj.y = app.renderer.height / 2;
 
         locObj.anchor.x = 0.5;
         locObj.anchor.y = 0.5;
