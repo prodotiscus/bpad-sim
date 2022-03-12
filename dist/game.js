@@ -8,6 +8,7 @@ class Game {
         this.locationNumber = 1;
         this.loadLocation(this.locationNumber);
         this.npc = null;
+        this.currentNpcName = "npc-a.jpg";
     }
 
     borderPolicy = {
@@ -35,6 +36,8 @@ class Game {
 
             app.stage.addChild(lct);
         });
+        
+        this.spawnNpc(this.currentNpcName);
     }
 
     spawnNpc(name) {
