@@ -68,16 +68,16 @@ class Game {
         e = e || window.event;
     
         if (e.key == 'ArrowUp') {
-            if (this.npc1.y < this.maxHeight) this.npc1.y ++;
+            if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y ++;
         }
         else if (e.key == 'ArrowDown') {
-            if (this.npc1.y > 0) this.npc1.y --;
+            if (this.sprites.npc1.y > 0) this.sprites.npc1.y --;
         }
         else if (e.keyCode == 'ArrowLeft') {
-            if (this.npc1.x > 0) this.npc1.x --;
+            if (this.sprites.npc1.x > 0) this.sprites.npc1.x --;
         }
         else if (e.keyCode == 'ArrowRight') {
-            if (this.npc1.y < this.maxWidth) this.npc1.y ++;
+            if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.y ++;
         }
     
     }
