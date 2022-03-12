@@ -76,8 +76,9 @@ class Game {
 
         this.pressed[key] = true;
 
-        for (var ky in Object.keys(this.pressed)) {
-            console.log(ky)
+        pressedKeys = Object.keys(this.pressed);
+        for (var i in pressedKeys) {
+            ky = pressedKeys[i];
             if (ky == 'ArrowUp') {
                 if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
             }
