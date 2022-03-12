@@ -5,6 +5,8 @@ document.body.appendChild(app.view);
 
 class Game {
     constructor() {
+        this.maxHeight = 600;
+        this.maxWidth = 800;
         this.sprites = {};
         this.preload(function (t) {
             app.stage.addChild(t.sprites.lct1);
@@ -60,9 +62,30 @@ class Game {
 
         return npcObj;
     }
+
+    checkKey (e) {
+
+        e = e || window.event;
+    
+        if (e.key == 'ArrowUp') {
+            if (this.npc1.y < this.maxHeight) this.npc1.y ++;
+        }
+        else if (e.key == 'ArrowDown') {
+            if (this.npc1.y > 0) this.npc1.y --;
+        }
+        else if (e.keyCode == 'ArrowLeft') {
+            if (this.npc1.x > 0) this.npc1.x --;
+        }
+        else if (e.keyCode == 'ArrowRight') {
+            if (this.npc1.y < this.maxWidth) this.npc1.y ++;
+        }
+    
+    }
 }
 
 
 var game = new Game();
+
+document.onkeydown = game.checkKey;
 
 
