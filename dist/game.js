@@ -74,23 +74,21 @@ class Game {
     sendKey (key) {
         if (this.sprites.npc1 === undefined) return;
 
-        for (var kk in this.pressed) {
-            if (kk !== key) this.sendKey(kk);
-        }
-
         this.pressed[key] = true;
 
-        if (key == 'ArrowUp') {
-            if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
-        }
-        else if (key == 'ArrowDown') {
-            if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y += this.me.physical.speed;
-        }
-        else if (key == 'ArrowLeft') {
-            if (this.sprites.npc1.x > 0) this.sprites.npc1.x -= this.me.physical.speed;
-        }
-        else if (key == 'ArrowRight') {
-            if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.x += this.me.physical.speed;
+        for (var ky in Object.keys(this.pressed)) {
+            if (ky == 'ArrowUp') {
+                if (this.sprites.npc1.y > 0) this.sprites.npc1.y -= this.me.physical.speed;
+            }
+            else if (ky == 'ArrowDown') {
+                if (this.sprites.npc1.y < this.maxHeight) this.sprites.npc1.y += this.me.physical.speed;
+            }
+            else if (ky == 'ArrowLeft') {
+                if (this.sprites.npc1.x > 0) this.sprites.npc1.x -= this.me.physical.speed;
+            }
+            else if (ky == 'ArrowRight') {
+                if (this.sprites.npc1.y < this.maxWidth) this.sprites.npc1.x += this.me.physical.speed;
+            }
         }
     }
 
